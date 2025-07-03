@@ -1,6 +1,6 @@
 package com.example.demo.rest;
 
-import com.example.demo.model.Body;
+import com.example.demo.model.Person;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ public interface TestApi {
             method = RequestMethod.GET)
     int getSumWithParam(@PathVariable(name = "number") int number);
 
-    @RequestMapping(value = {"/api/processBody"},
+    @RequestMapping(value = {"/api/processBody/{number}"},
             method = RequestMethod.POST)
-    String processBody(@RequestBody List<Body> body);
+    List<Person> processBody(@RequestBody List<Person> body, @PathVariable(name = "number") int number);
 }

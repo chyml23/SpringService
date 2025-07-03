@@ -1,9 +1,10 @@
 package com.example.demo.rest.impl;
 
-import com.example.demo.model.Body;
+import com.example.demo.model.Person;
 import com.example.demo.rest.TestApi;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,8 +27,14 @@ public class TestApiImpl implements TestApi {
     }
 
     @Override
-    public String processBody(List<Body> bodyList) {
-        return "I'm " + bodyList.get(0).getName() + " from " +  bodyList.get(0).getCity() + " , age - " + bodyList.get(0).getAge()
-                + " and my friend " + bodyList.get(1).getName() + " from " +  bodyList.get(1).getCity() + " , age - " + bodyList.get(1).getAge();
+    public List<Person> processBody(List<Person> personList, int number) {
+        List<Person> matchedPersons = new ArrayList<>();
+        for (Person person : personList) {
+            if(person.getEducation().getUniversityEndYear() > number){
+                matchedPersons.add(person);
+            }
+        }
+        return matchedPersons;
     }
+
 }
