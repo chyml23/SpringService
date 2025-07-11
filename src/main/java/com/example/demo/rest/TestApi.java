@@ -1,5 +1,7 @@
 package com.example.demo.rest;
 
+import com.example.demo.model.Car;
+import com.example.demo.model.ClientCarModel;
 import com.example.demo.model.Person;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,4 +26,15 @@ public interface TestApi {
     @RequestMapping(value = {"/api/processBody/{number}"},
             method = RequestMethod.POST)
     List<Person> processBody(@RequestBody List<Person> body, @PathVariable(name = "number") int number);
+
+    @RequestMapping(value = {"/api/car"},
+            method = RequestMethod.GET)
+    Car getCar();
+
+    @RequestMapping(value = {"/api/mostExpensiveCar"},
+            method = RequestMethod.GET)
+    ClientCarModel getMostExpensiveCar();
+
+
+
 }
