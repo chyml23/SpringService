@@ -3,12 +3,12 @@ package com.example.demo.rest;
 import com.example.demo.model.Car;
 import com.example.demo.model.ClientCarModel;
 import com.example.demo.model.Person;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import com.example.demo.model.postman.User;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TestApi {
     @RequestMapping(value = {"/api/test"},
@@ -34,6 +34,13 @@ public interface TestApi {
     @RequestMapping(value = {"/api/mostExpensiveCar"},
             method = RequestMethod.GET)
     ClientCarModel getMostExpensiveCar();
+
+    @RequestMapping(value = {"/api/create"},
+            method = RequestMethod.POST)
+    ResponseEntity createUser(@RequestBody User user,
+                              @RequestParam Map<String, String> params,
+                              @RequestHeader(value = "OperationType", required = true, defaultValue = "createUser") String operationType);
+
 
 
 

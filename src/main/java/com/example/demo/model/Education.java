@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 
 public class Education {
-    private int universityEndYear;
-    private String universityName;
+    private String graduationDate;
+    private String university;
 }
